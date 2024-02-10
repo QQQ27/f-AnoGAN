@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef7b447b-54ab-457e-b8c1-5a38442b2f22" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/fanogan/train_encoder_izif.py" beforeDir="false" afterPath="$PROJECT_DIR$/fanogan/train_encoder_izif.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanogan/train_wgangp.py" beforeDir="false" afterPath="$PROJECT_DIR$/fanogan/train_wgangp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_fucai.sh" beforeDir="false" afterPath="$PROJECT_DIR$/train_fucai.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/your_own_dataset/train_encoder_izif.py" beforeDir="false" afterPath="$PROJECT_DIR$/your_own_dataset/train_encoder_izif.py" afterDir="false" />
-    </list>
+    <list default="true" id="ef7b447b-54ab-457e-b8c1-5a38442b2f22" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

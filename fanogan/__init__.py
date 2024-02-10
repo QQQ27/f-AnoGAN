@@ -1,0 +1,1 @@
+from train_wgangp import train_wgangp

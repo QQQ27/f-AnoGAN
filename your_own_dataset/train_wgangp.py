@@ -1,5 +1,9 @@
 import os
 import sys
+sys.path.append('/home/lq/f-AnoGAN')
+sys.path.append('/home/lq/f-AnoGAN/fanogan')
+sys.path.append('/home/lq/f-AnoGAN/your_own_dataset')
+
 import time
 import torch
 from torch.utils.data import DataLoader

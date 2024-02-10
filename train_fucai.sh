@@ -26,23 +26,7 @@ export CUDA_VISIBLE_DEVICES="$CUDA"
 source activate ldm
 if [ "$TRAIN_STAGE" == "1" ]
 then
-  python train_wgangp.py \
-         --train_root /data3/lq/data/fucai/$DATAROOT \
-         --save_dir /data4/lq/output/f_anogan/wgangp \
-         --save_interval 50 \
-         --lr 0.0002 \
-         --img_size 128 \
-         --n_epochs 3000 \
-         --channels 1 \
-         --batchsize 128 \
-         --n_critic 5\
-         --seed 3452\
-         --redis_db $DB \
-         --sample_interval 200
-
-elif [ "$TRAIN_STAGE" == "2" ]
-then
-  python train_encoder_izif.py \
+  python /home/lq/f-AnoGAN/your_own_dataset/train_wgangp.py \
          --train_root /data3/lq/data/fucai/$DATAROOT \
          --save_dir /data4/lq/output/f_anogan \
          --save_interval 50 \
@@ -50,7 +34,23 @@ then
          --img_size 128 \
          --n_epochs 3000 \
          --channels 1 \
-         --batchsize 128 \
+         --batch_size 128 \
+         --n_critic 5\
+         --seed 3452\
+         --redis_db $DB \
+         --sample_interval 200
+
+elif [ "$TRAIN_STAGE" == "2" ]
+then
+  python ./your_own_dataset/train_encoder_izif.py \
+         --train_root /data3/lq/data/fucai/$DATAROOT \
+         --save_dir /data4/lq/output/f_anogan \
+         --save_interval 50 \
+         --lr 0.0002 \
+         --img_size 128 \
+         --n_epochs 3000 \
+         --channels 1 \
+         --batch_size 128 \
          --n_critic 5\
          --seed 3452\
          --redis_db $DB \
