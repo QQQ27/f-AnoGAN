@@ -1,37 +1,44 @@
 import os
 import sys
-
+import time
 import torch
 from torch.utils.data import DataLoader
 import torchvision.transforms as transforms
 from torchvision.datasets import ImageFolder
 
 from fanogan.train_wgangp import train_wgangp
-
+from dataloader import load_gereping_train, load_gereping_val, load_gereping_test
+from medical_dataloader import load_medical_train, load_medical_val, load_medical_test
 
 def main(opt):
     if type(opt.seed) is int:
         torch.manual_seed(opt.seed)
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-    pipeline = [transforms.Resize([opt.img_size]*2),
-                transforms.RandomHorizontalFlip()]
-    if opt.channels == 1:
-        pipeline.append(transforms.Grayscale())
-    pipeline.extend([transforms.ToTensor(),
-                     transforms.Normalize([0.5]*opt.channels, [0.5]*opt.channels)])
+    # pipeline = [transforms.Resize([opt.img_size]*2),
+    #             transforms.RandomHorizontalFlip()]
+    # if opt.channels == 1:
+    #     pipeline.append(transforms.Grayscale())
+    # pipeline.extend([transforms.ToTensor(),
+    #                  transforms.Normalize([0.5]*opt.channels, [0.5]*opt.channels)])
+    #
+    # transform = transforms.Compose(pipeline)
+    # dataset = ImageFolder(opt.train_root, transform=transform)
+    # train_dataloader = DataLoader(dataset, batch_size=opt.batch_size,
+    #                               shuffle=True)
 
-    transform = transforms.Compose(pipeline)
-    dataset = ImageFolder(opt.train_root, transform=transform)
-    train_dataloader = DataLoader(dataset, batch_size=opt.batch_size,
-                                  shuffle=True)
+    if "fucai" in opt.train_root.lower():
+        train_dataloader = load_gereping_train(opt)
+    elif "medical" in opt.train_root.lower():
+        train_dataloader = load_medical_train(opt)
 
     sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
     from mvtec_ad.model import Generator, Discriminator
 
     generator = Generator(opt)
     discriminator = Discriminator(opt)
-
+    t = time.strftime("%m%d_%H%M", time.localtime())
+    opt.save_dir = os.path.join(opt.save_dir, t)
     train_wgangp(opt, generator, discriminator, train_dataloader, device)
 
 
@@ -46,11 +53,13 @@ Licensed under MIT
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("train_root", type=str,
+    parser.add_argument("--train_root", type=str,
                         help="root name of your dataset in train mode")
+    parser.add_argument("--save_dir", type=str, help="")
+    parser.add_argument("--save_interval", type=int, default=50)
     parser.add_argument("--force_download", "-f", action="store_true",
                         help="flag of force download")
-    parser.add_argument("--n_epochs", type=int, default=300,
+    parser.add_argument("--n_epochs", type=int, default=3000,
                         help="number of epochs of training")
     parser.add_argument("--batch_size", type=int, default=32,
                         help="size of the batches")
@@ -73,6 +82,8 @@ if __name__ == "__main__":
                         help="interval betwen image samples")
     parser.add_argument("--seed", type=int, default=None,
                         help="value of a random seed")
+    parser.add_argument("--redis_port", type=int, default=6379)
+    parser.add_argument("--redis_db", type=int, default=0)
     opt = parser.parse_args()
 
     main(opt)

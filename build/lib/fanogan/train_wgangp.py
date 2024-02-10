@@ -106,11 +106,8 @@ def train_wgangp(opt, generator, discriminator,
 
                 if batches_done % opt.sample_interval == 0:
                     save_image(fake_imgs.data[:25],
-                               f"{opt.save_dir}/results/images/fake{batches_done:06}.png",
-                               nrow=5, normalize=False)
-                    save_image(real_imgs.data[:25],
-                               f"{opt.save_dir}/results/images/real{batches_done:06}.png",
-                               nrow=5, normalize=False)
+                               f"{opt.save_dir}/results/images/{batches_done:06}.png",
+                               nrow=5, normalize=True)
 
                 batches_done += opt.n_critic
         if epoch % opt.save_interval == 0:
