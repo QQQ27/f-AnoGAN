@@ -14,8 +14,8 @@ Licensed under MIT
 
 def train_encoder_izif(opt, generator, discriminator, encoder,
                        dataloader, device, kappa=1.0):
-    generator.load_state_dict(torch.load("results/generator"))
-    discriminator.load_state_dict(torch.load("results/discriminator"))
+    generator.load_state_dict(torch.load(f"{opt.save_dir}/results/gen_ep{opt.load_epoch}.pt"))
+    discriminator.load_state_dict(torch.load(f"{opt.save_dir}/results/dis_ep{opt.load_epoch}.pt"))
 
     generator.to(device).eval()
     discriminator.to(device).eval()
@@ -26,7 +26,7 @@ def train_encoder_izif(opt, generator, discriminator, encoder,
     optimizer_E = torch.optim.Adam(encoder.parameters(),
                                    lr=opt.lr, betas=(opt.b1, opt.b2))
 
-    os.makedirs("results/images_e", exist_ok=True)
+    os.makedirs(f"{opt.save_dir}/results/images_e", exist_ok=True)
 
     padding_epoch = len(str(opt.n_epochs))
     padding_i = len(str(len(dataloader)))
@@ -73,8 +73,14 @@ def train_encoder_izif(opt, generator, discriminator, encoder,
                     fake_z = encoder(fake_imgs)
                     reconfiguration_imgs = generator(fake_z)
                     save_image(reconfiguration_imgs.data[:25],
-                               f"results/images_e/{batches_done:06}.png",
-                               nrow=5, normalize=True)
+                               f"{opt.save_dir}/results/images_e/{batches_done:06}.png",
+                               nrow=5, normalize=False)
+                    save_image(fake_imgs.data[:25],
+                               f"{opt.save_dir}/results/images_e/{batches_done:06}.png",
+                               nrow=5, normalize=False)
 
                 batches_done += opt.n_critic
-    torch.save(encoder.state_dict(), "results/encoder")
+
+        if epoch % opt.save_interval == 0:
+            torch.save(encoder.state_dict(), f"{opt.save_dir}/results/encoder_ep%d.pt" % epoch)
+    torch.save(encoder.state_dict(), f"{opt.save_dir}/results/encoder_ep%d.pt" % epoch)

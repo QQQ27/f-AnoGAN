@@ -28,7 +28,7 @@ if [ "$TRAIN_STAGE" == "1" ]
 then
   python train_wgangp.py \
          --train_root /data3/lq/data/fucai/$DATAROOT \
-         --save_dir /data4/lq/output/f_anogan \
+         --save_dir /data4/lq/output/f_anogan/wgangp \
          --save_interval 50 \
          --lr 0.0002 \
          --img_size 128 \

@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef7b447b-54ab-457e-b8c1-5a38442b2f22" name="更改" comment="" />
+    <list default="true" id="ef7b447b-54ab-457e-b8c1-5a38442b2f22" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/fanogan/train_encoder_izif.py" beforeDir="false" afterPath="$PROJECT_DIR$/fanogan/train_encoder_izif.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanogan/train_wgangp.py" beforeDir="false" afterPath="$PROJECT_DIR$/fanogan/train_wgangp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_fucai.sh" beforeDir="false" afterPath="$PROJECT_DIR$/train_fucai.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/your_own_dataset/train_encoder_izif.py" beforeDir="false" afterPath="$PROJECT_DIR$/your_own_dataset/train_encoder_izif.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,22 +39,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.train_wgangp.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.train_wgangp_fucai.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ubuntupc/Projects/GAN/f-AnoGAN/your_own_dataset/train_wgangp.py&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.train_wgangp.executor": "Debug",
+    "Python.train_wgangp_fucai.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/ubuntupc/Projects/GAN/f-AnoGAN/your_own_dataset/train_wgangp.py",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.train_wgangp">
     <configuration name="train_wgangp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="f-AnoGAN" />
@@ -98,8 +103,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.train_wgangp" />
       <item itemvalue="Python.train_wgangp_fucai" />
+      <item itemvalue="Python.train_wgangp" />
     </list>
     <recent_temporary>
       <list>
@@ -134,7 +139,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/your_own_dataset/train_wgangp.py</url>
-          <line>40</line>
+          <line>41</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

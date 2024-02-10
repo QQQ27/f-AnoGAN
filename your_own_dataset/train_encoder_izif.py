@@ -1,6 +1,6 @@
 import os
 import sys
-
+import time
 import torch
 from torch.utils.data import DataLoader
 import torchvision.transforms as transforms
@@ -32,7 +32,8 @@ def main(opt):
     generator = Generator(opt)
     discriminator = Discriminator(opt)
     encoder = Encoder(opt)
-
+    t = time.strftime("%m%d_%H%M", time.localtime())
+    opt.save_dir = os.path.join(opt.save_dir, t)
     train_encoder_izif(opt, generator, discriminator, encoder,
                        train_dataloader, device)
 
@@ -48,8 +49,9 @@ Licensed under MIT
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("train_root", type=str,
+    parser.add_argument("--train_root", type=str,
                         help="root name of your dataset in train mode")
+    parser.add_argument("--save_dir", type=str)
     parser.add_argument("--force_download", "-f", action="store_true",
                         help="flag of force download")
     parser.add_argument("--n_epochs", type=int, default=200,

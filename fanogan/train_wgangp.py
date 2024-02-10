@@ -113,11 +113,10 @@ def train_wgangp(opt, generator, discriminator,
                                nrow=5, normalize=False)
 
                 batches_done += opt.n_critic
+
         if epoch % opt.save_interval == 0:
-            model_save_path = os.path.join(opt.save_dir, "results")
-            gen_save_path = os.path.join(opt.save_dir, "gen_ep%d.pt" % epoch)
-            dis_save_path = os.path.join(opt.save_dir, "dis_ep%d.pt" % epoch)
-            os.makedirs(model_save_path, exist_ok=True)
+            gen_save_path = os.path.join(opt.save_dir, "results", "gen_ep%d.pt" % epoch)
+            dis_save_path = os.path.join(opt.save_dir, "results", "dis_ep%d.pt" % epoch)
             torch.save(generator.state_dict(), gen_save_path)
             torch.save(discriminator.state_dict(), dis_save_path)
     torch.save(generator.state_dict(), os.path.join(opt.save_dir, "gen_ep%d.pt" % epoch))
