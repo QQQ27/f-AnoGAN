@@ -10,6 +10,7 @@ from fanogan.train_wgangp import train_wgangp
 from dataloader import load_gereping_train, load_gereping_val, load_gereping_test
 from medical_dataloader import load_medical_train, load_medical_val, load_medical_test
 
+
 def main(opt):
     if type(opt.seed) is int:
         torch.manual_seed(opt.seed)
